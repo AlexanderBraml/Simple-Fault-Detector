@@ -31,4 +31,5 @@ def alarm():
     mailer.send_mail(msg.get_formatted_msg())
 
 if __name__ == "__main__":
+    print("Starting udp listener")
     listen_forever(handle_alarm)
