@@ -19,4 +19,3 @@ class Mailer():
                 msg = msg.replace('RECEIVERNAME', self.receivers[0][idx])
                 msg = msg.replace('RECEIVERMAIL', receiver)
                 server.sendmail(self.sender, receiver, msg)
-                print("Sent e-mail " + str(idx + 1))
