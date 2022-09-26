@@ -5,6 +5,8 @@
 # Prerequisites
 *.d
 
+env.py
+
 # Compiled Object files
 *.slo
 *.lo
