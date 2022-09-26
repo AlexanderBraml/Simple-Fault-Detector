@@ -5,10 +5,7 @@ class UDPHandler(socketserver.DatagramRequestHandler):
 
     def handle(self):
         if self.client_address[0] == client_ip:
-
-            msgRecvd = self.rfile.readline().decode().strip()
-            
-            if msgRecvd == "1":
+            if self.rfile.readline().decode().strip() == "1":
                 callback()
 
 
@@ -19,6 +16,8 @@ def callback():
 
 def listen_forever(callback):
     global callback_
+
+    print("Listening on port 6969")
     listen_addr = ('0.0.0.0', 6969)
 
     callback_ = callback
