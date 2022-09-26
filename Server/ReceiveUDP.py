@@ -1,16 +1,15 @@
 import socketserver
-import time
+from env import client_ip
 
 class UDPHandler(socketserver.DatagramRequestHandler):
 
     def handle(self):
-        if self.client_address[0] == "192.168.178.60":
+        if self.client_address[0] == client_ip:
 
             msgRecvd = self.rfile.readline().decode().strip()
             
             if msgRecvd == "1":
                 callback()
-                print("alarm", time.time())
 
 
 def callback():
