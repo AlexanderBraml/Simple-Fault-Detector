@@ -1,7 +1,7 @@
 import socketserver
 import time
 
-class MyUDPHandler(socketserver.DatagramRequestHandler):
+class UDPHandler(socketserver.DatagramRequestHandler):
 
     def handle(self):
         if self.client_address[0] == "192.168.178.60":
@@ -9,12 +9,22 @@ class MyUDPHandler(socketserver.DatagramRequestHandler):
             msgRecvd = self.rfile.readline().decode().strip()
             
             if msgRecvd == "1":
+                callback()
                 print("alarm", time.time())
 
-if __name__ == '__main__':
+
+def callback():
+    global callback_
+    callback_()
+
+
+def listen_forever(callback):
+    global callback_
     listen_addr = ('0.0.0.0', 6969)
+
+    callback_ = callback
 
     socketserver.UDPServer.allow_reuse_address = True 
 
-    serverUDP = socketserver.UDPServer(listen_addr, MyUDPHandler)
+    serverUDP = socketserver.UDPServer(listen_addr, UDPHandler)
     serverUDP.serve_forever()
