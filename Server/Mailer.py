@@ -16,7 +16,7 @@ class Mailer():
             
             server.login(self.sender, self.password)
             for idx, receiver in enumerate(self.receivers[0]):
-                message = message.replace('RECEIVERNAME', self.receivers[0][idx])
-                message = message.replace('RECEIVERMAIL', receiver)
-                server.sendmail(self.sender, receiver, message)
+                msg = msg.replace('RECEIVERNAME', self.receivers[0][idx])
+                msg = msg.replace('RECEIVERMAIL', receiver)
+                server.sendmail(self.sender, receiver, msg)
                 print("Sent e-mail " + str(idx + 1))
