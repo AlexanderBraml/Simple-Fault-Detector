@@ -1,25 +1,20 @@
+import socketserver
+import time
 
-import socket
+class MyUDPHandler(socketserver.DatagramRequestHandler):
 
-localIP     = "127.0.0.1"
-localPort   = 20001
-bufferSize  = 1024
+    def handle(self):
+        if self.client_address[0] == "192.168.178.60":
 
-# Create a datagram socket
-UDPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+            msgRecvd = self.rfile.readline().decode().strip()
+            
+            if msgRecvd == "1":
+                print("alarm", time.time())
 
-# Bind to address and ip
-UDPServerSocket.bind((localIP, localPort))
-print("UDP server up and listening")
-# Listen for incoming datagrams
+if __name__ == '__main__':
+    listen_addr = ('0.0.0.0', 6969)
 
-while(True):
-    bytesAddressPair = UDPServerSocket.recvfrom(bufferSize)
-    message = bytesAddressPair[0]
-    address = bytesAddressPair[1]
-    clientMsg = "Message from Client:{}".format(message)
-    clientIP  = "Client IP Address:{}".format(address)
-    print(clientMsg)
-    print(clientIP)
-    # Sending a reply to client
-    UDPServerSocket.sendto(bytesToSend, address)
+    socketserver.UDPServer.allow_reuse_address = True 
+
+    serverUDP = socketserver.UDPServer(listen_addr, MyUDPHandler)
+    serverUDP.serve_forever()
