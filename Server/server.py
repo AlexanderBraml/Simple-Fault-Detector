@@ -5,6 +5,7 @@ from env import sender, password, receivers
 import message as msg
 from ReceiveUDP import listen_forever
 from time import time
+from logger import log
 
 
 last_alarm = 0
@@ -19,6 +20,7 @@ def handle_alarm():
     global next_alarm_earliest
 
     if current_seconds() > next_alarm_earliest:
+        log("Alarm triggered")
         alarm()
 
 
@@ -30,6 +32,7 @@ def alarm():
     mailer = Mailer(sender, password, receivers, server_host="smtp.gmail.com", server_port=465)
     mailer.send_mail(msg.get_formatted_msg())
 
+
 if __name__ == "__main__":
-    print("Starting udp listener")
+    log("Starting server")
     listen_forever(handle_alarm)
