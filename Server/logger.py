@@ -11,7 +11,7 @@ def add_timestamp(text):
 
 def append_to_file(filename, text):
     with open(filename, 'a') as f:
-        f.append(text)
+        f.write(text + '\n')
 
 
 def log(text):
