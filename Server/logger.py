@@ -2,6 +2,12 @@ import datetime, time
 from os import times
 from env import log_path, udp_log_path
 
+
+def delete_udp_log():
+    with open(udp_log_path, 'w') as f:
+        f.write('')
+
+
 def timestamp():
     return str(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
 
@@ -19,4 +25,4 @@ def log(text):
 
 
 def log_udp(text):
-    append_to_file(udp_log_path, add_timestamp(text))
+    pass # append_to_file(udp_log_path, add_timestamp(text))
