@@ -427,4 +427,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+checkRunning.sh
+
 # End of https://www.toptal.com/developers/gitignore/api/python,windows,linux,c++,jetbrains,clion
