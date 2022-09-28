@@ -7,7 +7,7 @@ class UDPHandler(socketserver.DatagramRequestHandler):
     def handle(self):
         if self.client_address[0] == client_ip:
             msg = self.rfile.readline().decode().strip()
-            log_udp(f'Received udp packet containing {msg}')
+            log_udp(f'Received {msg}')
             if msg == "1":
                 callback()
 
