@@ -8,7 +8,7 @@ Now once the light blinks, the ESP powers up and spams UDP packets to my local s
 As the light just blinks, the ESP has only a few seconds to connect to the network and send the packets, so it needs to be very fast. Sending the e-mails directly from the ESP just is not fast enough.
 
 Here is a simple sketch of the whole system:
-![sketch of the system](...)
+![sketch of the system](https://github.com/AlexanderBraml/Simple-Fault-Detector/blob/main/Docs/Sketch.jpg?raw=true)
 
 This is a very simple project and easily extendable, so feel free to use my code however you want. You just need a file called env.py to store credentials and constants. A sample is in the Server directory.
 
