@@ -10,6 +10,6 @@ As the light just blinks, the ESP has only a few seconds to connect to the netwo
 Here is a simple sketch of the whole system:
 ![sketch of the system](https://github.com/AlexanderBraml/Simple-Fault-Detector/blob/main/Docs/Sketch.jpg?raw=true)
 
-This is a very simple project and easily extendable, so feel free to use my code however you want. You just need a file called env.py to store credentials and constants. A sample is in the Server directory.
+This is a very simple project and easily extendable, so feel free to use my code however you want. You just need a .env file to store credentials and constants. An example is in the src directory.
 
 I don't plan on extending this any further, maybe a few quick fixes, but nothing more.
